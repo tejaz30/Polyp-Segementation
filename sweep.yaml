@@ -1,0 +1,29 @@
+
+method: bayes  # or random/grid if preferred
+metric:
+  name: Val IoU
+  goal: maximize
+
+parameters:
+  epochs:
+    values: [5,10,15]
+
+  lr:
+    distribution: uniform
+    min: 0.00001
+    max: 0.001
+
+  batch_size:
+    values: [16] #[4,8,16]
+
+  encoder_name:
+    values: ["resnet18"]
+
+  decoder_channels:
+    values:
+      - [64, 32, 16, 8, 4]
+      - [256, 128, 64, 32, 16]
+      - [512, 256, 128, 64, 32]
+
+  encoder_depth:
+    values: [4,5] #5
